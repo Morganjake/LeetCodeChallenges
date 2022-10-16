@@ -1,0 +1,21 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        highest = 0
+        impossible = -1
+        if len(nums) > 1000:
+            for i in range(len(nums)):
+                if nums[i] > highest:
+                    highest = nums[i]
+            for i in range(len(nums)):
+                if i + highest < target:
+                    impossible += 1
+        if impossible < 0:
+            impossible = 0
+        for i in range(impossible,len(nums)):
+            for I in range(impossible,len(nums)):
+                if nums[i] + nums[I] == target:
+                    if nums.index(nums[i]) != nums.index(nums[I]):
+                        return [i,I]
+                    if nums.count(nums[i]) > 1:
+                        indexes = [index for index, char in enumerate(nums) if char == nums[i]]
+                        return [indexes[0],indexes[1]]
