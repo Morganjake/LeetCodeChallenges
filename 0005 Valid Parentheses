@@ -1,0 +1,21 @@
+class Solution(object):
+    def isValid(self, s):
+        sequence = []
+        if s.count("(") != s.count(")") or s.count("[") != s.count("]") or s.count("{") != s.count("}"):
+            return False
+        for i in s:
+            if i in ["(","[","{"]:
+                sequence.append(i)
+            else:
+                if len(sequence) > 0:
+                    if i == ")":
+                        if sequence[-1] != "(": return False
+                        sequence.pop()
+                    if i == "]":
+                        if sequence[-1] != "[": return False
+                        sequence.pop()
+                    if i == "}":
+                        if sequence[-1] != "{": return False
+                        sequence.pop()
+                else: return False
+        return True
