@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        strs.sort(key = len)
+        prefix = ""
+        passed = True
+        if len(strs) == 1:
+            return strs[0]
+        if all(item in strs for item in [""]):
+            return ""
+        for i in range(len(strs[0])):
+            for I in range(len(strs)):
+                if passed == True:
+                    if strs[I][i] != strs[I-1][i]:
+                        passed = False
+                else:      
+                    return prefix
+            prefix += strs[0][i]
+        return prefix
