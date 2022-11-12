@@ -1,0 +1,13 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        Nums = []
+        Del = []
+        for i in range(len(nums)):
+            if nums[i] not in Nums:
+                Nums.append(nums[i])
+            else:
+                Del.append(i)
+        for i in range(len(Del)):
+            del nums[Del[i]-i]
+        k = len(Nums)
+        return k
