@@ -1,0 +1,12 @@
+class Solution(object):
+    def searchInsert(self, nums, target):
+        for i in range(len(nums)):
+            if nums[i] == target:
+                return i
+        for i in range(len(nums)):
+            if nums[i-1] < target and nums[i] > target:
+                return i
+        if target < nums[0]:
+            return 0
+        else:
+            return len(nums)
