@@ -1,0 +1,12 @@
+class Solution(object):
+    def removeElement(self, nums, val):
+        Del = []
+
+        for i in range(len(nums)):
+            if nums[i] == val:
+                Del.append(i)
+        
+        for i in range(len(Del)):
+            del nums[Del[i]-i]
+
+        return len(nums)
