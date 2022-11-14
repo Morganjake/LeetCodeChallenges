@@ -1,0 +1,9 @@
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        word = ""
+        for i in s.rstrip():
+            if i == " ":
+                word = ""
+            else:
+                word += i
+        return len(word)
