@@ -1,0 +1,27 @@
+class Solution(object):
+    def addBinary(self, a, b):
+        longest = a if len(str(a.lstrip("0"))) > len(str(b.lstrip("0"))) else b
+        nums = [str(2**pos) for pos,val in enumerate(longest.lstrip("0"))]
+        DecimalA = 0
+        DecimalB = 0
+        for pos,val in enumerate(a.lstrip("0")[::-1]):
+            if val == "1":
+                DecimalA += int(nums[pos])
+        for pos,val in enumerate(b.lstrip("0")[::-1]):
+            if val == "1":
+                DecimalB += int(nums[pos])
+        Decimal = DecimalA + DecimalB
+        Highest = 1
+        while Highest < Decimal:
+            Highest *= 2
+        if Highest != Decimal and Decimal != 0:
+            Highest //= 2
+        Binary = ""
+        while Highest >= 1:
+            if Decimal >= Highest:
+                Binary += "1"
+                Decimal -= Highest
+            else:
+                Binary += "0"
+            Highest /= 2
+        return Binary
