@@ -1,0 +1,29 @@
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        Merged = []
+        nums1pos = 0
+        nums2pos = 0
+        while True:
+            try:
+                if nums1[nums1pos] <= nums2[nums2pos]:
+                    Merged.append(nums1[nums1pos])
+                    nums1pos += 1
+                else:
+                    Merged.append(nums2[nums2pos])
+                    nums2pos += 1
+            except:
+                if len(nums1[nums1pos:]) >= len(nums2[nums2pos:]):
+                    Merged += nums1[nums1pos:]
+                else:
+                    Merged += nums2[nums2pos:]
+                break
+        if len(Merged) % 2 != 0:
+            return Merged[len(Merged)//2]
+        else:
+                try:
+                    if Merged[len(Merged)//2] != Merged[(len(Merged)//2)-1]:
+                        return (Merged[len(Merged)//2] + Merged[(len(Merged)//2)-1]) / 2.0
+                    else:
+                        return Merged[len(Merged)//2]
+                except:
+                    return (Merged[0] + Merged[1]) / 2.0
