@@ -19,3 +19,13 @@ class Solution(object):
                     if nums.count(nums[i]) > 1:
                         indexes = [index for index, char in enumerate(nums) if char == nums[i]]
                         return [indexes[0],indexes[1]]
+
+#BETTER TWOSUM
+class Solution(object):
+    def twoSum(self, nums, target):
+        mapping = {}
+        for pos,val in enumerate(nums):
+            if target - val in mapping:
+                return [mapping[target - val], pos]
+            mapping[val] = pos
+        return []
