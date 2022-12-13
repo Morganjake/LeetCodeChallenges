@@ -1,0 +1,17 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        substring = ""
+        Longest = 0
+        Current = 0
+        for i in s:
+            if i in substring:
+                if Current > Longest:
+                    Longest = Current
+                while i in substring:
+                    substring = substring[1:]
+                    Current -= 1
+            substring += i
+            Current += 1
+        if Current > Longest:
+            Longest = Current
+        return Longest
