@@ -1,0 +1,28 @@
+class MyHashMap(object):
+
+    def __init__(self):
+        self.data = []
+
+    def put(self, key, value):
+        for pos,val in enumerate(self.data):
+            if key == val[0]:
+                del self.data[pos]
+                self.data.insert(pos, [key,value])
+                break
+        else:
+            self.data.append([key,value])
+        
+
+    def get(self, key):
+        for i in self.data:
+            if key == i[0]:
+                return i[1]
+        else:
+            return -1
+        
+
+    def remove(self, key):
+        for pos,val in enumerate(self.data):
+            if key == val[0]:
+                del self.data[pos]
+                break
