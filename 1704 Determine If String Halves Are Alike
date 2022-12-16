@@ -2,3 +2,17 @@ class Solution(object):
     def halvesAreAlike(self, s):
         halfs = [s[:len(s)/2].lower(),s[len(s)/2:].lower()]
         return True if halfs[0].count("a") + halfs[0].count("e") + halfs[0].count("i") + halfs[0].count("o") + halfs[0].count("u") == halfs[1].count("a") + halfs[1].count("e") + halfs[1].count("i") + halfs[1].count("o") + halfs[1].count("u") else False
+
+#OTHER SOLUTION
+class Solution(object):
+    def halvesAreAlike(self, s):
+        halfs = [s[:len(s)/2].lower(),s[len(s)/2:].lower()]
+        h1 = 0
+        h2 = 0
+        for i in halfs[0]:
+            if i in ["a","e","i","o","u",]:
+                h1 += 1
+        for i in halfs[1]:
+            if i in ["a","e","i","o","u",]:
+                h2 += 1
+        return h1 == h2
