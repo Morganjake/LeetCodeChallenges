@@ -1,0 +1,4 @@
+class Solution(object):
+    def halvesAreAlike(self, s):
+        halfs = [s[:len(s)/2].lower(),s[len(s)/2:].lower()]
+        return True if halfs[0].count("a") + halfs[0].count("e") + halfs[0].count("i") + halfs[0].count("o") + halfs[0].count("u") == halfs[1].count("a") + halfs[1].count("e") + halfs[1].count("i") + halfs[1].count("o") + halfs[1].count("u") else False
