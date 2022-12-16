@@ -1,0 +1,20 @@
+class MyHashSet(object):
+
+    def __init__(self):
+        self.data = []
+
+    def add(self, key):
+        if key not in self.data:
+            self.data.append(key)
+        
+
+    def remove(self, key):
+        if key in self.data:
+            for pos,val in enumerate(self.data):
+                if key == val:
+                    del self.data[pos]
+
+    def contains(self, key):
+        if key in self.data:
+            return True
+        return False
