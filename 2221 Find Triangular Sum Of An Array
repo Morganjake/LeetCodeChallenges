@@ -1,0 +1,10 @@
+class Solution(object):
+    def triangularSum(self, nums):
+        Nums = nums
+        for i in range(len(nums)-1):
+            step = []
+            for I in range(len(Nums)-1):
+                step.append(int(str(Nums[I] + Nums[I+1])[-1]))
+            Nums = step
+
+        return Nums[-1]
