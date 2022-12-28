@@ -1,0 +1,16 @@
+class Solution(object):
+    def rob(self, nums):
+        Max = 0
+        Pos = 0
+        while True:
+            try:
+                if (nums[Pos] + sum(nums[Pos + 2:])) > (sum(nums[Pos + 3:])):
+                    Pos += 2
+                    Max += nums[Pos]
+                else:
+                    Pos += 3
+                    Max += nums[Pos + 1]
+            except:
+                break
+
+        return Max
