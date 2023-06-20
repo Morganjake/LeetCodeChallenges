@@ -9,4 +9,4 @@ class Solution(object):
 
 class Solution(object):
     def addDigits(self, num):
-        return 9 if num % 9 == 0 and num != 0 else num % 9 #0(1) TIME
+        return 9 if num % 9 == 0 and num != 0 else num % 9 #O(1) TIME
