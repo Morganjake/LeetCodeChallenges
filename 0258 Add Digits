@@ -6,3 +6,7 @@ class Solution(object):
                 temp += int(i)
             num = temp
         return num
+
+class Solution(object):
+    def addDigits(self, num):
+        return 9 if num % 9 == 0 and num != 0 else num % 9 #0(1) TIME
