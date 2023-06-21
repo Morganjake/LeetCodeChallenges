@@ -1,0 +1,13 @@
+class Solution(object):
+    def convertToTitle(self, columnNumber):
+        columns = []
+        column = ""
+        while columnNumber > 26:
+            if columnNumber % 26 == 0:
+                column += "Z"
+                columnNumber -= 26
+            else:
+                column += chr(64 + columnNumber % 26)
+            columnNumber = columnNumber // 26
+        column += chr(64 + columnNumber)
+        return column[::-1]
