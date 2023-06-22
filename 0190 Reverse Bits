@@ -1,0 +1,5 @@
+class Solution:
+    def reverseBits(self, n):
+        binary = str(bin(n))
+        binary = "0" * (34 - len(binary)) + binary[2:]
+        return int(binary[::-1], 2)
