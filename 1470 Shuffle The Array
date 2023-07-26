@@ -1,0 +1,7 @@
+class Solution(object):
+    def shuffle(self, nums, n):
+        Sorted = []
+        for i in range(n):
+            Sorted.append(nums[i])
+            Sorted.append(nums[i + n])
+        return Sorted
