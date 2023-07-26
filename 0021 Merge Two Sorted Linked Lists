@@ -1,11 +1,9 @@
 class Solution(object):
-    # I have no idea how this works
     def mergeTwoLists(self, list1, list2):
-
         LinkedList = ListNode()
         List = LinkedList
 
-        while list1 and list2:
+        while list1 != None and list2 != None:
             if list1.val < list2.val:
                 List.next = list1
                 list1 = list1.next
@@ -14,9 +12,7 @@ class Solution(object):
                 list2 = list2.next
             List = List.next
 
-        if list1:
+        if list1 != None:
             List.next = list1
-        elif list2:
+        elif list2 != None:
             List.next = list2
-
-        return LinkedList.next
