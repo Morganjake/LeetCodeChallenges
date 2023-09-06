@@ -1,0 +1,15 @@
+class Solution(object):
+    def isIsomorphic(self, s, t):
+
+        Keys = {}
+        Keys2 = {}
+
+        for SChar, TChar in zip(s, t):
+            if SChar not in Keys and TChar not in Keys2:
+                Keys[SChar] = TChar
+                Keys2[TChar] = SChar
+            else:
+                if Keys.get(SChar) != TChar or Keys2.get(TChar) != SChar:
+                    return False
+        
+        return True
