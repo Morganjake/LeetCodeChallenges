@@ -1,0 +1,11 @@
+class Solution(object):
+    def kWeakestRows(self, mat, k):
+        Total = [sum(x) for x in mat]
+        Weakest =  []
+
+        for i in range(k):
+            Weakest.append(Total.index(min(Total)))
+            Total[Total.index(min(Total))] = 1000
+
+        return Weakest
+        
