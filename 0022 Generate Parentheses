@@ -1,0 +1,19 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+
+        def AddParenthesis(NewCombination):
+
+            if len(NewCombination) == n * 2:
+                AllCombinations.append(NewCombination)
+                return
+
+            if NewCombination.count("(") < n:
+                AddParenthesis(NewCombination + "(")
+
+            if NewCombination.count("(") - NewCombination.count(")") > 0:
+                AddParenthesis(NewCombination + ")")
+
+        AllCombinations = []
+        AddParenthesis("")
+        
+        return AllCombinations
