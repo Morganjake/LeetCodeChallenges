@@ -1,0 +1,15 @@
+class Solution(object):
+    def isHappy(self, n):
+
+        def AddSquares(Num, Memory):
+            NewNum = sum([int(x) ** 2 for x in str(Num)])
+            if NewNum == 1:
+                return True
+
+            elif NewNum in Memory:
+                return False
+            
+            Memory.append(NewNum)
+            return AddSquares(NewNum, Memory)
+
+        return AddSquares(n, [])
