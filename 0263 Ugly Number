@@ -1,0 +1,24 @@
+class Solution(object):
+    def isUgly(self, n):
+
+        def Div(n):
+
+            if n == 1:
+                return True
+
+            elif n == 0 or n == -1:
+                return False
+
+            if n % 2 == 0:
+                return Div(n // 2)
+
+            elif n % 3 == 0:
+                return Div(n // 3)
+
+            elif n % 5 == 0:
+                return Div(n // 5)
+
+            else:
+                return False
+
+        return Div(n)
