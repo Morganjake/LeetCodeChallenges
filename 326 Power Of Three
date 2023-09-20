@@ -1,0 +1,12 @@
+class Solution(object):
+    def isPowerOfThree(self, n):
+
+        while True:
+
+            if n == 1:
+                return True
+            
+            if n < 1:
+                return False
+
+            n /= 3.0
