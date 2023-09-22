@@ -1,0 +1,26 @@
+class Solution(object):
+    def isSameTree(self, p, q):
+
+        def GetNext(Node, List):
+
+            if Node != None:
+                List.append(Node.val)
+
+                if Node.left:
+                    GetNext(Node.left, List)
+
+                else:
+                    List.append(None)
+
+                if Node.right:
+                    GetNext(Node.right, List)
+
+                else:
+                    List.append(None)
+
+                return List
+
+        Tree1 = GetNext(p, [])
+        Tree2 = GetNext(q, [])
+
+        return Tree1 == Tree2
