@@ -1,0 +1,34 @@
+class Solution(object):
+    def maxDepth(self, root):
+        def BreadthFirstSearch(List):
+
+            Layer = []
+
+            for Node in List[-1]:
+
+                if Node:
+
+                    if Node.left:
+
+                        Layer.append(Node.left)
+
+                    else:
+                        Layer.append(None)
+
+                    if Node.right:
+
+                        Layer.append(Node.right)
+
+                    else:
+                        Layer.append(None)
+
+            if Layer:
+                List.append(Layer)
+                return BreadthFirstSearch(List)
+
+            else:
+                return List
+
+        Tree = BreadthFirstSearch([[root]])
+
+        return len(Tree) - 1
