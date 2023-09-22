@@ -45,7 +45,7 @@ class Solution(object):
 
         for Layer in Layers[1:]:
 
-            if Layer[len(Layer) // 2:] != Layer[:len(Layer) // 2][::-1]:
+            if Layer != Layer[::-1]:
 
                 return False
 
