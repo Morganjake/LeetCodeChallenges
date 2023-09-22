@@ -1,0 +1,46 @@
+class Solution(object):
+    def minDepth(self, root):
+
+        def BreadthFirstSearch(List, Size):
+
+            Layer = []
+
+            for Node in List[-1]:
+
+                if Node:
+
+                    if Node.left:
+
+                        Layer.append(Node.left)
+
+                    else:
+
+                        if not Node.right:
+                            return Size
+
+                        Layer.append(None)
+
+                    if Node.right:
+
+                        Layer.append(Node.right)
+
+                    else:
+
+                        if not Node.left:
+                            return Size
+
+                        Layer.append(None)
+
+            if Layer:
+                List.append(Layer)
+                return BreadthFirstSearch(List, Size + 1)
+
+            else:
+                return List
+
+        if not root:
+            return 0
+
+        Tree = BreadthFirstSearch([[root]], 0)
+
+        return Tree + 1        
