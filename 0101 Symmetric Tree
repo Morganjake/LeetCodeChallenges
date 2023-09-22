@@ -1,0 +1,53 @@
+class Solution(object):
+    def isSymmetric(self, root):
+
+        def BreadthFirstSearch(List):
+
+            Layer = []
+
+            for Node in List[-1]:
+
+                if Node:
+
+                    if Node.left:
+
+                        Layer.append(Node.left)
+
+                    else:
+                        Layer.append(None)
+
+                    if Node.right:
+
+                        Layer.append(Node.right)
+
+                    else:
+                        Layer.append(None)
+
+            if Layer:
+                List.append(Layer)
+                return BreadthFirstSearch(List)
+
+            else:
+                return List
+
+        Tree = BreadthFirstSearch([[root]])
+
+        Layers = []
+
+        for pos, i in enumerate(Tree):
+            Layers.append([])
+
+            for j in i:
+                if j:
+                    Layers[pos].append(j.val)
+                else:
+                    Layers[pos].append(None)
+
+        for Layer in Layers[1:]:
+
+            if Layer[len(Layer) // 2:] != Layer[:len(Layer) // 2][::-1]:
+
+                return False
+
+        return True
+        
