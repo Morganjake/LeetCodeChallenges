@@ -23,9 +23,14 @@ class Solution(object):
 #BETTER TWOSUM
 class Solution(object):
     def twoSum(self, nums, target):
-        mapping = {}
+
+        cache = {}
+
         for pos,val in enumerate(nums):
-            if target - val in mapping:
-                return [mapping[target - val], pos]
-            mapping[val] = pos
+
+            if target - val in cache:
+                return [cache[target - val], pos]
+
+            cache[val] = pos
+
         return []
