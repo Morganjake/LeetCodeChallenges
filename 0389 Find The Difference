@@ -1,0 +1,29 @@
+class Solution(object):
+    def findTheDifference(self, s, t):
+        SHash = {}
+        THash = {}
+
+        for i in s:
+            
+            if i in SHash.keys():
+                SHash[i] += 1
+            
+            else:
+                SHash[i] = 1
+
+        for i in t:
+            
+            if i in THash.keys():
+                THash[i] += 1
+            
+            else:
+                THash[i] = 1
+
+        for i in THash:
+
+            if not SHash.get(i):
+
+                return i
+
+            if SHash[i] != THash[i]:
+                return i
