@@ -1,0 +1,48 @@
+class Solution(object):
+    def findMode(self, root):
+
+        def GetNext(Node, List):
+
+            if Node != None:
+                List.append(Node.val)
+
+                if Node.left:
+                    GetNext(Node.left, List)
+
+                else:
+                    List.append(None)
+
+                if Node.right:
+                    GetNext(Node.right, List)
+
+                else:
+                    List.append(None)
+
+                return List
+
+        Tree = GetNext(root, [])
+        Count = {}
+        
+        for i in Tree:
+
+            if i != None:
+
+                if i in Count.keys():
+
+                    Count[i] += 2
+
+                else:
+
+                    Count[i] = 1
+
+        Highest = [Tree[0]]
+
+        for i in Count:
+
+            if Count[i] > Count[Highest[0]]:
+                Highest = [i]
+            
+            elif Count[i] == Count[Highest[0]] and i not in Highest:
+                Highest.append(i)
+
+        return Highest
