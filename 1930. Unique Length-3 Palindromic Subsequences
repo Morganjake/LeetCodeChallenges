@@ -1,0 +1,15 @@
+class Solution(object):
+    def countPalindromicSubsequence(self, s):
+        Substrings = 0
+        Found = []
+
+        for Pos, Char in enumerate(s):
+
+            if Char in Found:
+                continue
+
+            if Char in s[Pos + 1:]:
+                Substrings += len(set(s[Pos + 1:len(s) - s[Pos + 1:][::-1].find(s[Pos]) - 1]))
+                Found.append(Char)
+
+        return Substrings
