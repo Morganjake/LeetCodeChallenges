@@ -1,0 +1,18 @@
+class Solution(object):
+    def countSubstrings(self, s):
+
+        Count = 0
+
+        for i in range(len(s)):
+            
+            Spacing = 0
+            while i + Spacing < len(s) and i - Spacing >= 0 and s[i + Spacing] == s[i - Spacing]:
+                Count += 1
+                Spacing += 1
+
+            Spacing = 0
+            while i + Spacing + 1 < len(s) and i - Spacing >= 0 and s[i + Spacing + 1] == s[i - Spacing]:
+                Count += 1
+                Spacing += 1
+
+        return Count
