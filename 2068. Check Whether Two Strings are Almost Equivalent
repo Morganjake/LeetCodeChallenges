@@ -1,0 +1,15 @@
+class Solution(object):
+    def checkAlmostEquivalent(self, word1, word2):
+
+        Word1Count = {x: word1.count(x) for x in word1}
+        Word2Count = {x: word2.count(x) for x in word2}
+
+        for Letter in Word1Count:
+            if max(Word1Count[Letter], word2.count(Letter)) - min(Word1Count[Letter], word2.count(Letter)) > 3:
+                return False
+
+        for Letter in Word2Count:
+            if max(Word2Count[Letter], word1.count(Letter)) - min(Word2Count[Letter], word1.count(Letter)) > 3:
+                return False
+
+        return True
