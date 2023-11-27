@@ -1,0 +1,19 @@
+class Solution(object):
+    def shiftingLetters(self, s, shifts):
+
+        Shifts = [0 for i in range(len(s))]
+        Letters = list(s)
+
+        for Step in shifts:
+            Shifts[Step[0]] += -1 + 2 * Step[2]
+
+            if Step[1] + 1 < len(Shifts):
+                Shifts[Step[1] + 1] += 1 - 2 * Step[2]
+
+        CurrentOffset = 0
+
+        for i, j in enumerate(s):
+            CurrentOffset += Shifts[i]
+            Letters[i] = chr((ord(j) + CurrentOffset - 97) % 26 + 97)
+
+        return "".join(Letters)
