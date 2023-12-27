@@ -1,0 +1,23 @@
+class Solution(object):
+    def minCost(self, colors, neededTime):
+
+        Pos = 1
+        Time = 0
+
+        while Pos < len(colors):
+
+            if colors[Pos] == colors[Pos - 1]:
+
+                ConsecutiveColours = [neededTime[Pos - 1]]
+                Time += neededTime[Pos - 1]
+
+                while Pos < len(colors) and colors[Pos] == colors[Pos - 1]:
+                    Time += neededTime[Pos]
+                    ConsecutiveColours.append(neededTime[Pos])
+                    Pos += 1
+                    
+                Time -= max(ConsecutiveColours)
+
+            Pos += 1
+
+        return Time
