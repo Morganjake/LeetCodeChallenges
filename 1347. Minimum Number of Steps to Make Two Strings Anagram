@@ -1,0 +1,26 @@
+class Solution(object):
+    def minSteps(self, s, t):
+        SCounts = {}
+        TCounts = {}
+        Sum = 0
+        for Char in s:
+            if Char in SCounts.keys():
+                SCounts[Char] += 1
+
+            else:
+                SCounts[Char] = 1
+
+        for Char in t:
+            if Char in TCounts.keys():
+                TCounts[Char] += 1
+
+            else:
+                TCounts[Char] = 1
+
+        for Char in t:
+            if Char in SCounts:
+                SCounts[Char] -= 1
+                if SCounts[Char] == 0:
+                    del SCounts[Char]
+
+        return Sum + sum(SCounts.values())
