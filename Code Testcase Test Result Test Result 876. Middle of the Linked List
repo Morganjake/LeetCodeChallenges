@@ -1,0 +1,13 @@
+class Solution(object):
+    def middleNode(self, head):
+        List = []
+        Temp = head
+        
+        while Temp:
+            List.insert(0, Temp.val)
+            Temp = Temp.next
+
+        for i in range(len(List) // 2):
+            head = head.next
+
+        return head
