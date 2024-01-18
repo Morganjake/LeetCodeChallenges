@@ -1,0 +1,19 @@
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+
+        List = []
+
+        while list1:
+            List.insert(0, list1.val)
+            list1 = list1.next
+
+        while list2:
+            List.insert(0, list2.val)
+            list2 = list2.next
+
+        List.sort()
+
+        def ListToLinkedList(List):
+            return ListNode(val = List[0], next = ListToLinkedList(List[1:])) if List else None
+
+        return ListToLinkedList(List)
