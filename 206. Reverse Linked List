@@ -1,0 +1,12 @@
+class Solution(object):
+    def reverseList(self, head):
+        Queue = []
+
+        while head:
+            Queue.insert(0, head.val)
+            head = head.next
+
+        def ListToLinkedList(List):
+            return ListNode(val = List[0], next = ListToLinkedList(List[1:])) if List else None
+
+        return ListToLinkedList(Queue)
