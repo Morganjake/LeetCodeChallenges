@@ -1,0 +1,14 @@
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        Stack = []
+
+        while head:
+            Stack.append(head.val)
+            head = head.next
+
+        Stack.pop(-n)
+
+        def ListToLinkedList(List):
+            return ListNode(val = List[0], next = ListToLinkedList(List[1:])) if List else None
+
+        return ListToLinkedList(Stack)
