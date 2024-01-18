@@ -4,11 +4,11 @@ class Solution(object):
         List = []
 
         while list1:
-            List.insert(0, list1.val)
+            List.append(list1.val)
             list1 = list1.next
 
         while list2:
-            List.insert(0, list2.val)
+            List.append(list2.val)
             list2 = list2.next
 
         List.sort()
