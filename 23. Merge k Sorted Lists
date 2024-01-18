@@ -1,0 +1,16 @@
+class Solution(object):
+    def mergeKLists(self, lists):
+
+        AllLists = []
+
+        for List in lists:
+            while List:
+                AllLists.append(List.val)
+                List = List.next
+
+        AllLists.sort()
+
+        def ListToLinkedList(List):
+            return ListNode(val = List[0], next = ListToLinkedList(List[1:])) if List else None
+
+        return ListToLinkedList(AllLists)
