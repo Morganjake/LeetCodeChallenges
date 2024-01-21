@@ -1,0 +1,11 @@
+class Solution(object):
+    def rob(self, nums):
+        Rob1 = 0
+        Rob2 = 0
+
+        for i in nums:
+            Max = max(Rob1 + i, Rob2)
+            Rob1 = Rob2
+            Rob2 = Max
+        
+        return Rob2
