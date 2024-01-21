@@ -1,0 +1,25 @@
+class Solution(object):
+    def permute(self, nums):
+
+        Permutations = []
+
+        def Permute(Current, OtherNums):
+
+            if not OtherNums:
+                return [Current]
+
+            Permutations = []
+
+            for Num in OtherNums:
+                NewNums = OtherNums[:]
+                NewNums.remove(Num)
+                Permutations = Permutations + Permute(Current + [Num], NewNums)
+
+            return Permutations
+
+        for Num in nums:
+            NewNums = nums[:]
+            NewNums.remove(Num)
+            Permutations = Permutations + Permute([Num], NewNums)
+
+        return Permutations
