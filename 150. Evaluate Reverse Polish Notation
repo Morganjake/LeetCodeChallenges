@@ -1,0 +1,28 @@
+class Solution(object):
+    def evalRPN(self, tokens):
+
+        while len(tokens) > 1:
+
+            pos = 0
+            while pos < len(tokens):
+                if tokens[pos] == "+":
+                    tokens[pos] = str(int(tokens[pos - 2]) + int(tokens[pos - 1]))
+
+                elif tokens[pos] == "-":
+                    tokens[pos] = str(int(tokens[pos - 2]) - int(tokens[pos - 1]))
+
+                elif tokens[pos] == "*":
+                    tokens[pos] = str(int(tokens[pos - 2]) * int(tokens[pos - 1]))
+
+                elif tokens[pos] == "/":
+                    tokens[pos] = str(int(float(tokens[pos - 2]) / float(tokens[pos - 1])))
+
+                else:
+                    pos += 1
+                    continue
+
+                pos -= 2
+                del tokens[pos]
+                del tokens[pos]
+
+        return int(tokens[0])
