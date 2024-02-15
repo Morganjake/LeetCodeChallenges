@@ -1,0 +1,12 @@
+class Solution(object):
+    def largestPerimeter(self, nums):
+
+        while len(nums) > 2:
+
+            if sum(nums) - max(nums) > max(nums):
+                return sum(nums)
+
+            else:
+                del nums[nums.index(max(nums))]
+
+        return -1
