@@ -1,0 +1,28 @@
+class Solution(object):
+    def findMaxLength(self, nums):
+
+        Zeroes = 0
+        Ones = 0
+        Hashmap = {}
+        Longest = 0
+
+        for i,v in enumerate(nums):
+
+            if v:
+                Ones += 1
+
+            else:
+                Zeroes += 1
+
+            Key = str(max(0, Zeroes - Ones)) + "," + str(max(0, Ones - Zeroes))
+
+            if Key == "0,0":
+                Longest = i + 1
+
+            if Key in Hashmap:
+                Longest = max(Longest, i - Hashmap[Key])
+            
+            else:
+                Hashmap[Key] = i
+
+        return Longest
