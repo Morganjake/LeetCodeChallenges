@@ -1,0 +1,13 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+
+        Count = {}
+
+        for Index, Num in enumerate(nums):
+            
+            if Num in Count and abs(Count[Num] - Index) <= k:
+                return True
+
+            Count[Num] = Index
+
+        return False
