@@ -1,0 +1,48 @@
+class Solution(object):
+    def fractionAddition(self, expression):
+
+        Fractions = []
+
+        LeftPointer = 0
+        RightPointer = 1
+
+        while RightPointer < len(expression):
+
+            if expression[RightPointer] == "+":
+                Fractions.append(expression[LeftPointer:RightPointer])
+                LeftPointer = RightPointer + 1
+
+            elif expression[RightPointer] == "-":
+                Fractions.append(expression[LeftPointer:RightPointer])
+                LeftPointer = RightPointer
+            
+            RightPointer += 1
+
+        Fractions.append(expression[LeftPointer:RightPointer])
+
+        for Index, Fraction in enumerate(Fractions):
+            Fractions[Index] = map(int, Fraction.split("/"))
+
+        while len(Fractions) > 1:
+            Fractions[0][0] *= Fractions[1][1]
+            Fractions[1][0] *= Fractions[0][1]
+            Fractions[1][1] *= Fractions[0][1]
+            Fractions[1][0] += Fractions[0][0]
+            del Fractions[0]
+
+        if Fractions[0][0] == 0:
+            return "0/1"
+
+        Divisor = 2
+    
+        while Divisor <= abs(Fractions[0][0]):
+
+            if Fractions[0][0] % Divisor == 0 and Fractions[0][1] % Divisor == 0:
+                Fractions[0][0] /= Divisor
+                Fractions[0][1] /= Divisor
+                Divisor = 2
+
+            else:
+                Divisor += 1
+
+        return str(Fractions[0][0]) + "/" + str(Fractions[0][1])
