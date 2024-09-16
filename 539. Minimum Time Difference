@@ -1,0 +1,14 @@
+class Solution(object):
+    def findMinDifference(self, timePoints):
+
+        Smallest = 99999
+        
+        SortedTimes = sorted(timePoints)
+        SortedTimes.append(str(int(SortedTimes[0].split(":")[0]) + 24) + ":" + SortedTimes[0].split(":")[1])
+
+        for j, i in zip(SortedTimes[1:], SortedTimes[:-1]):
+            if int(j.split(":")[0]) * 60 - int(i.split(":")[0]) * 60 + int(j.split(":")[1]) - int(i.split(":")[1]) < Smallest:
+                Smallest = int(j.split(":")[0]) * 60 - int(i.split(":")[0]) * 60 + int(j.split(":")[1]) - int(i.split(":")[1])
+
+        return Smallest
+        
