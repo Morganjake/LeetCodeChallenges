@@ -1,0 +1,13 @@
+class MyCalendar(object):
+
+    def __init__(self):
+        self.Bookings = []
+
+    def book(self, start, end):
+
+        for i in self.Bookings:
+            if (start < i[1] and start >= i[0]) or (end <= i[1] and end > i[0]) or start < i[0] and end > i[1]:
+                return False
+
+        self.Bookings.append([start, end])
+        return True
