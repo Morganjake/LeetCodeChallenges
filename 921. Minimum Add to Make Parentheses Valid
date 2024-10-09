@@ -1,0 +1,13 @@
+class Solution(object):
+    def minAddToMakeValid(self, s):
+        Openings = 0
+        MinimumAdd = 0
+
+        for i in s:
+            if i == "(": Openings += 1
+            if i == ")":
+                if Openings > 0: Openings -= 1
+                else: MinimumAdd += 1
+        
+        return MinimumAdd + Openings
+        
