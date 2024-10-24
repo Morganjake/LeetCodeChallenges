@@ -1,0 +1,9 @@
+class Solution(object):
+    def findRotation(self, mat, target):
+
+        for i in range(4):
+            if mat == target: return True
+            mat = [[mat[x][i] for x in range(len(mat) - 1, -1, -1)] for i in range(len(mat))]
+
+        return False
+        
