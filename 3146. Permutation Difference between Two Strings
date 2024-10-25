@@ -1,0 +1,3 @@
+class Solution(object):
+    def findPermutationDifference(self, s, t):
+        return sum([abs(Position - t.find(Letter)) for Position, Letter in enumerate(s)])
