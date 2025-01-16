@@ -1,0 +1,25 @@
+class Solution(object):
+    def isMatch(self, s, p):
+        SIndex, PIndex = 0, 0
+
+        while PIndex < len(p):
+            
+            if (PIndex < len(p) - 1 and p[PIndex + 1] == "*"):
+
+                Char = p[PIndex]
+                while SIndex < len(s) and s[SIndex:] != "" and (Char == s[SIndex] or Char == "."):
+                    while len(p[PIndex:]) >= 4 and p[PIndex : PIndex + 2] in [p[PIndex + 2 : PIndex + 4]]: PIndex += 2
+                    if self.isMatch(s[SIndex:], p[PIndex + 2:]): return True
+                    SIndex += 1
+
+                PIndex += 2
+                continue
+
+            if SIndex >= len(s): return False
+
+            elif p[PIndex] not in ".*" and p[PIndex] != s[SIndex]: return False
+
+            SIndex += 1
+            PIndex += 1
+
+        return SIndex >= len(s)
