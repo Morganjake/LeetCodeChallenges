@@ -1,0 +1,21 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def rotateRight(self, head, k):
+        List = []
+
+        while head:
+            List.append(head.val)
+            head = head.next
+        
+        k = k % len(List) if List else 0
+        for i in range(k):
+            List.insert(0, List.pop())
+
+        def ListToLinkedList(List):
+            return ListNode(List[0], ListToLinkedList(List[1:])) if List else None
+
+        return ListToLinkedList(List)
