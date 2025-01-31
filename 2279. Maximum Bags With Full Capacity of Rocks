@@ -1,0 +1,21 @@
+class Solution(object):
+    def maximumBags(self, capacity, rocks, additionalRocks):
+
+        difference = []
+        Max = 0
+
+        for i, j in zip(capacity, rocks):
+            difference.append(i - j)
+
+        difference.sort()
+
+        while difference and additionalRocks >= 0:
+            if additionalRocks >= difference[0]:
+                Max += 1
+                additionalRocks -= difference[0]
+                difference.pop(0)
+
+            else:
+                break
+
+        return Max
