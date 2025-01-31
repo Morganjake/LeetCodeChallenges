@@ -1,0 +1,25 @@
+class Solution(object):
+    def areAlmostEqual(self, s1, s2):
+
+        if len(s1) != len(s2): return False
+
+        wrong = None
+        swaps = 0
+        done = False
+
+        for i, j in zip(s1, s2):
+
+            if i != j and not wrong:
+                swaps += 1
+                wrong = [i, j]
+
+            elif i != j:
+                swaps += 1
+                if i != wrong[1] or j != wrong[0]:
+                    return False
+
+                if done: return False
+                done = True
+
+
+        return swaps != 1
