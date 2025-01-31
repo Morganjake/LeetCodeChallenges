@@ -1,0 +1,21 @@
+class Solution(object):
+    def wordPattern(self, pattern, s):
+        S = s.split(" ")
+        Map = {}
+        RevMap = {}
+
+        if len(S) != len(pattern): return False
+        
+        for i, j in zip(pattern, S):
+
+            if i in Map:
+                if Map[i] != j: return False
+            else:
+                Map[i] = j
+
+            if j in RevMap:
+                if RevMap[j] != i: return False
+            else:
+                RevMap[j] = i
+
+        return True
