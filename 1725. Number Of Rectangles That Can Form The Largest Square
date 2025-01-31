@@ -1,0 +1,11 @@
+class Solution(object):
+    def countGoodRectangles(self, rectangles):
+
+        Min = []
+
+        for i in rectangles:
+            Min.append(min(i[0], i[1]))
+
+        Max = max(Min)
+
+        return Min.count(Max)
