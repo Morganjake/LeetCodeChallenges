@@ -1,0 +1,10 @@
+class Solution(object):
+    def canBeTypedWords(self, text, brokenLetters):
+        Words = text.split(" ")
+        Amount = 0
+
+        for i in Words:
+            if not any(x in brokenLetters for x in i):
+                Amount += 1
+
+        return Amount
