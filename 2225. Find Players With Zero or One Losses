@@ -1,0 +1,16 @@
+class Solution(object):
+    def findWinners(self, matches):
+
+        players = list(set([x[0] for x in matches] + [x[1] for x in matches]))
+        loses = {x: 0 for x in players}
+
+        ans = [[], []]
+
+        for x in matches:
+            loses[x[1]] += 1
+
+        for x in loses:
+            if loses[x] == 0: ans[0].append(x)
+            if loses[x] == 1: ans[1].append(x)
+
+        return [sorted(ans[0]), sorted(ans[1])]
