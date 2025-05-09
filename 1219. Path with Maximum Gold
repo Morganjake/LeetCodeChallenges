@@ -1,0 +1,55 @@
+class Solution(object):
+    def getMaximumGold(self, grid):
+
+        Max = 0
+
+        for RowIndex, Row in enumerate(grid):
+            for ColumnIndex, Column in enumerate(Row):
+
+                if Column == 0: continue
+
+                Seen = [[False for i in Row] for j in grid]
+                Seen[RowIndex][ColumnIndex] = True
+
+                CurrentTiles = [[RowIndex, ColumnIndex, grid[RowIndex][ColumnIndex], Seen]]
+
+                while CurrentTiles:
+                    NextTileList = []
+
+                    for Tile in CurrentTiles:
+
+                        HasNeighbours = False
+
+                        for Direction in [[1, 0], [-1, 0], [0, 1], [0, -1]]:
+                            
+                            if Tile[0] + Direction[0] < 0 or Tile[0] + Direction[0] >= len(grid): continue
+                            if Tile[1] + Direction[1] < 0 or Tile[1] + Direction[1] >= len(Row): continue
+                            if Tile[3][Tile[0] + Direction[0]][Tile[1] + Direction[1]]: continue
+                            if grid[Tile[0] + Direction[0]][Tile[1] + Direction[1]] == 0: continue
+
+                            HasNeighbours = True
+
+                            NextTile = [
+                                Tile[0] + Direction[0],
+                                Tile[1] + Direction[1],
+                                Tile[2] + grid[Tile[0] + Direction[0]][Tile[1] + Direction[1]],
+                                [[i for i in x] for x in Tile[3]] # Stupid list copy
+                            ]
+                            NextTile[3][Tile[0] + Direction[0]][Tile[1] + Direction[1]] = True
+
+                            NextTileList.append(NextTile)
+
+                        if not HasNeighbours:
+                            if Tile[2] > Max:
+                                Max = Tile[2]
+
+                                # Checks if every square with gold has been searched
+                                for x in range(len(grid)):
+                                    if not all((i != 0) == j for i, j in zip(grid[x], Tile[3][x])):
+                                        break
+                                else:
+                                    return Max
+
+                    CurrentTiles = NextTileList
+
+        return Max
